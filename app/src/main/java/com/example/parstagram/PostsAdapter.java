@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.parse.Parse;
 import com.parse.ParseFile;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,12 +46,26 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         return posts.size();
     }
 
+    //add a list of items
+    public void addAll(List<Post> postList) {
+        posts.addAll(postList);
+        notifyDataSetChanged();
+    }
+
+    //clean all elements of the recycler
+    public void clear(){
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
         private TextView tvTime;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
